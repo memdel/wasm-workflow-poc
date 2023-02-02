@@ -16,3 +16,6 @@ It does not do yet:
 * provide SDK for the consumers to be aware of those side effects
 * allow adding and removing nodes that represent steps in the workflow
 * make a connection between the nodes, so that an output would be used at the subsequent step
+
+<div style="display: flex; justify-content: center;"><img width="640px" src="app-screenshot.png">
+</div >
