@@ -1,5 +1,12 @@
 # WASM executor
 
+DEMO:
+http://workflow-runner.s3-website.eu-central-1.amazonaws.com
+
+
+<div style="display: flex; justify-content: center;"><img width="640px" src="app-screenshot.png">
+</div >
+
 This is a simple POC that does the following:
 * has a web application client that allows user to select WASM files from the file system
 * turns those files to byte arrays
@@ -17,5 +24,3 @@ It does not do yet:
 * allow adding and removing nodes that represent steps in the workflow
 * make a connection between the nodes, so that an output would be used at the subsequent step
 
-<div style="display: flex; justify-content: center;"><img width="640px" src="app-screenshot.png">
-</div >
