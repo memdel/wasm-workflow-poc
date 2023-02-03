@@ -57,7 +57,7 @@ export function App() {
       });
 
       const flowStepsResponse = await fetch(
-        "http://46.101.204.158:8080/execute-flow",
+        "http://127.0.0.1:8080/execute-flow",
         {
           method: "PATCH",
           body: body,
