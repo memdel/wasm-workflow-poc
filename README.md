@@ -3,6 +3,7 @@
 DEMO:
 http://workflow-runner.s3-website.eu-central-1.amazonaws.com
 
+*you can use the `.wasm` files at the root of this repository, or write your own. They take two `i32` and return `i32`.*
 
 <div style="display: flex; justify-content: center;"><img width="640px" src="app-screenshot.png">
 </div >
