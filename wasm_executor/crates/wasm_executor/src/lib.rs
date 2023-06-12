@@ -3,35 +3,6 @@ use std::thread;
 use std::time::Duration;
 use wasmtime::{Config, Engine, Func, FuncType, Instance, Module, Store, Val, ValType};
 
-/// some functions available for users to call from their WASM
-/// TODO: enable this and make available to users
-// pub trait MemasSdk {
-//     fn square(number_to_square: i32) -> i32;
-//     fn add(a: i32, b: i32) -> i32;
-// }
-
-/// implementation of the functions
-// struct MemasSdkImplementation;
-// TODO: needs async_trait macro
-// impl MemasSdk for MemasSdkImplementation {
-//     /// squares the input
-//     fn square(number_to_square: i32) -> i32 {
-//         // simulate delay
-//         let duration_to_park = Duration::from_secs(2);
-//         thread::park_timeout(duration_to_park);
-//         // square the input
-//         return number_to_square * number_to_square;
-//     }
-
-//     /// adds inputs together
-//     fn add(a: i32, b: i32) -> i32 {
-//         // simulate delay
-//         let duration_to_park = Duration::from_secs(2);
-//         thread::park_timeout(duration_to_park);
-//         return a + b;
-//     }
-// }
-
 /// squares the input
 async fn square(number_to_square: i32) -> i32 {
     // simulate delay
