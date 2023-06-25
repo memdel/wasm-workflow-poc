@@ -66,6 +66,6 @@ pub async fn execute_binary_with_parameters(binary: Vec<u8>, params: Vec<i32>) -
     let calculation_result = call_add_twice
         .call_async(&mut store, (params[0], params[1]))
         .await;
-    dbg!(&calculation_result);
+    // dbg!(&calculation_result);
     calculation_result
 }
