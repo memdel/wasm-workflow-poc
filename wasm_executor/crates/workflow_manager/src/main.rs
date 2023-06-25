@@ -8,7 +8,7 @@ use workflow_json_parser::WorkflowNode;
 
 #[tokio::main]
 async fn main() {
-    let parsed_workflow_maybe = WorkflowNode::try_from_json_absulte_path("/Users/i587107/Documents/development_2/08_wasm-workflow-poc/wasm-workflow-poc/wasm_executor/crates/workflow_manager/src/exampleWorkflowNodes.json");
+    let parsed_workflow_maybe = WorkflowNode::try_from_json_absolute_path("/Users/i587107/Documents/development_2/08_wasm-workflow-poc/wasm-workflow-poc/wasm_executor/crates/workflow_manager/src/exampleWorkflowNodes.json");
 
     if let Ok(parsed_workflow) = parsed_workflow_maybe {
         print_start_executing_banner();

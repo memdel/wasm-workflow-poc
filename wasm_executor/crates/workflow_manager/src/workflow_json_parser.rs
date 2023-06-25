@@ -37,7 +37,7 @@ pub struct WorkflowNode {
 pub type _WorkflowNodes = Vec<WorkflowNode>;
 
 impl WorkflowNode {
-    pub fn try_from_json_absulte_path(
+    pub fn try_from_json_absolute_path(
         workflow_json_absolute_path: &str,
     ) -> Result<Vec<WorkflowNode>, String> {
         // try to parse the input string with serde
