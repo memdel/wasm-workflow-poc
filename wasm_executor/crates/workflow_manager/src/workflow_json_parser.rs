@@ -1,5 +1,4 @@
 use std::collections::HashMap;
-use std::fs;
 
 use serde::{Deserialize, Serialize};
 
@@ -15,7 +14,7 @@ use serde::{Deserialize, Serialize};
     },
     "output": "i32"
 },
- */
+*/
 
 #[derive(Serialize, Deserialize, Default, Debug)]
 pub enum DataType {
@@ -34,18 +33,25 @@ pub struct WorkflowNode {
     pub output: DataType,
 }
 
-pub type _WorkflowNodes = Vec<WorkflowNode>;
+pub type WorkflowNodes = Vec<WorkflowNode>;
 
-impl WorkflowNode {
-    pub fn try_from_json_absolute_path(
-        workflow_json_absolute_path: &str,
-    ) -> Result<Vec<WorkflowNode>, String> {
-        // try to parse the input string with serde
+pub struct Workflow {
+    pub workflow_definition: WorkflowNodes,
 
-        let nodes_as_json_string = Self::fs_file_to_string(workflow_json_absolute_path)?;
+    /// this is just a placeholder for providing input data
+    /// it maps node id to fixed value that is being passed into workflow nodes
+    pub workflow_data: HashMap<String, i32>,
+}
 
-        let workflow_nodes = Self::json_string_to_vector_of_nodes(nodes_as_json_string)
-            .map_err(|_| "got serde_json::Error when trying to parse the string 😬")?;
+impl Workflow {
+    /// tries to read a JSON and based on that create a workflow
+    pub fn try_create_workflow_from_json(workflow_json: String) -> Result<WorkflowNodes, String> {
+        // let nodes_as_json_string = Self::fs_file_to_string(workflow_json_absolute_path)?;
+        // dbg!(&fs_file_to_string);
+        let workflow_nodes =
+            Self::json_string_to_vector_of_nodes(workflow_json).map_err(|error| {
+                format!("got serde_json::Error when trying to parse the string {error:?}😬")
+            })?;
 
         Ok(workflow_nodes)
     }
@@ -57,12 +63,5 @@ impl WorkflowNode {
         let parsed_workflow_nodes: Vec<WorkflowNode> =
             serde_json::from_str(unvalidated_string.as_str())?;
         Ok(parsed_workflow_nodes)
-    }
-
-    fn fs_file_to_string(absolute_path: &str) -> Result<String, String> {
-        let file_content_as_string =
-            fs::read_to_string(absolute_path).map_err(|_| "could not read the file".to_string())?;
-
-        Ok(file_content_as_string)
     }
 }

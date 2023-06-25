@@ -1,43 +1,44 @@
 [
-    {
-        "id": "node_id_0",
-        "name": "Node 0",
-        "description": "Sum of 2 integers",
-        "wasm_file_path": "/Users/i587107/Documents/development_2/08_wasm-workflow-poc/wasm-workflow-poc/main.wasm",
-        "inputs": {
-            "parameter_name_1": "i32",
-            "parameter_name_2": "i32"
-        },
-        "output": "i32"
-    },
-    {
-        "id": "node_id_2",
-        "name": "Node 2",
-        "description": "adds 100 to the input",
-        "wasm_file_path": "/Users/i587107/Documents/development_2/08_wasm-workflow-poc/wasm-workflow-poc/main100.wasm",
-        "inputs": {
-            "parameter_name_1": "i32"
-        },
-        "output": "i32"
-    },
-    {
-        "id": "node_id_3",
-        "name": "Node 3",
-        "description": "adds 100 to the input",
-        "wasm_file_path": "/Users/i587107/Documents/development_2/08_wasm-workflow-poc/wasm-workflow-poc/main100.wasm",
-        "inputs": {
-            "parameter_name_1": "i32"
-        },
-        "output": "i32"
-    },
-    {
-        "id": "node_id_3",
-        "name": "Node 3",
-        "description": "adds 100 to the input",
-        "wasm_file_path": "/Users/i587107/Documents/development_2/08_wasm-workflow-poc/wasm-workflow-poc/main100.wasm",
-        "inputs": {
-            "parameter_name_1": "i32"
-        },
-        "output": "i32"
-    }
+	{
+		"id": "node_id_1",
+		"name": "Node 0",
+		"description": "Sum of 2 integers",
+		"wasm_file_path": "/Users/memas/development7/07_wasm-workflow-poc/wasm-workflow-poc/sum_of_2_ints.wasm",
+		"inputs": {
+			"parameter_name_1": "I32",
+			"parameter_name_2": "I32"
+		},
+		"output": "I32"
+	},
+	{
+		"id": "node_id_2",
+		"name": "Node 2",
+		"description": "Sum of 2 integers",
+		"wasm_file_path": "/Users/memas/development7/07_wasm-workflow-poc/wasm-workflow-poc/sum_of_2_ints.wasm",
+		"inputs": {
+			"parameter_name_1": "I32",
+			"parameter_name_2": "I32"
+		},
+		"output": "I32"
+	},
+	{
+		"id": "node_id_3",
+		"name": "Node 3",
+		"description": "adds 100 to the input",
+		"wasm_file_path": "/Users/memas/development7/07_wasm-workflow-poc/wasm-workflow-poc/add_100.wasm",
+		"inputs": {
+			"parameter_name_1": "I32"
+		},
+		"output": "I32"
+	},
+	{
+		"id": "node_id_4",
+		"name": "Node 3",
+		"description": "adds 100 to the input",
+		"wasm_file_path": "/Users/memas/development7/07_wasm-workflow-poc/wasm-workflow-poc/add_100.wasm",
+		"inputs": {
+			"parameter_name_1": "I32"
+		},
+		"output": "I32"
+	}
 ]
