@@ -1,9 +1,7 @@
-use std::borrow::Cow;
 use std::collections::HashMap;
 use std::fs;
 
 use serde::{Deserialize, Serialize};
-use serde_json::{Result as SerdeJsonResult, Value};
 
 /*
 {
@@ -21,9 +19,9 @@ use serde_json::{Result as SerdeJsonResult, Value};
 
 #[derive(Serialize, Deserialize, Default, Debug)]
 pub enum DataType {
-    i32,
+    I32,
     #[default]
-    u32,
+    U32,
 }
 
 #[derive(Serialize, Deserialize, Default, Debug)]
@@ -36,7 +34,7 @@ pub struct WorkflowNode {
     pub output: DataType,
 }
 
-pub type WorkflowNodes = Vec<WorkflowNode>;
+pub type _WorkflowNodes = Vec<WorkflowNode>;
 
 impl WorkflowNode {
     pub fn try_from_json_absulte_path(

@@ -43,16 +43,13 @@ pub async fn execute_flow(post: web::Json<WorkflowNodes>) -> impl Responder {
         let index = node.index;
 
         // if the byte array has content we naively expect it to be WASM
-        if wasm_binary.len() > 0 {
+        if !wasm_binary.is_empty() {
             // execute WASM
             let output_result = execute_binary_with_parameters(wasm_binary, inputs).await;
 
             // outputs
             let output = output_result.unwrap();
-            let node_result = NodeResult {
-                index: index,
-                output: output,
-            };
+            let node_result = NodeResult { index, output };
             node_results.push(node_result);
         }
     }

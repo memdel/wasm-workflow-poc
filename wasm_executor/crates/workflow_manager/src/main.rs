@@ -18,8 +18,8 @@ async fn main() {
         let mut output_from_previous_call = 1;
         let default_input_2 = 1;
 
-        println!("{}", format!(""));
-        println!("{}", format!("##########"));
+        println!();
+        println!("##########");
         for workflow_node in parsed_workflow {
             let wasm_as_byte_array =
                 try_read_file_to_byte_array(&workflow_node.wasm_file_path).unwrap();
@@ -42,39 +42,39 @@ async fn main() {
 }
 
 fn print_start_executing_banner() {
-    println!("{}", format!(""));
-    println!("{}", format!("##########"));
-    println!("{}", format!("Executing workflow"));
-    println!("{}", format!("##########"));
-    println!("{}", format!(""));
+    println!();
+    println!("##########");
+    println!("Executing workflow");
+    println!("##########");
+    println!();
 }
 
 fn print_found_workflow_banner(workflow: &Vec<WorkflowNode>) {
-    println!("{}", format!(""));
-    println!("{}", format!("##########"));
-    println!("{}", format!("found the below workflow 👇"));
+    println!();
+    println!("##########");
+    println!("found the below workflow 👇");
     println!("{:?}", workflow);
-    println!("{}", format!("##########"));
-    println!("{}", format!(""));
+    println!("##########");
+    println!();
 }
 
 fn print_execution_result(workflow_node: &WorkflowNode, input_values: Vec<i32>, output: i32) {
     let workflow_node_name = &workflow_node.name;
     let workflow_node_description = &workflow_node.description;
     let inputs = &workflow_node.inputs;
-    println!("{}", format!("called:"));
-    println!("{}", format!("name: {workflow_node_name}"));
-    println!("{}", format!("description: {workflow_node_description}"));
-    println!("{}", format!("with inputs (types): {inputs:?}"));
-    println!("{}", format!("with inputs (values): {input_values:?}"));
-    println!("{}", format!("got output: {output:?}"));
-    println!("{}", format!("##########"));
+    println!("called:");
+    println!("name: {workflow_node_name}");
+    println!("description: {workflow_node_description}");
+    println!("with inputs (types): {inputs:?}");
+    println!("with inputs (values): {input_values:?}");
+    println!("got output: {output:?}");
+    println!("##########");
 }
 
 fn try_read_file_to_byte_array(absolute_path: &str) -> Result<Vec<u8>, String> {
-    let mut file = File::open(absolute_path).map_err(|_| format!("could not read WASM file"))?;
+    let mut file = File::open(absolute_path).map_err(|_| "could not read WASM file".to_string())?;
     let mut data = Vec::new();
     file.read_to_end(&mut data)
-        .map_err(|_| format!("could not read WASM file"))?;
-    return Ok(data);
+        .map_err(|_| "could not read WASM file".to_string())?;
+    Ok(data)
 }

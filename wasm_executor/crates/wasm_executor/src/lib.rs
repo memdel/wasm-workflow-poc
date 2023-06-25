@@ -8,7 +8,7 @@ async fn square(number_to_square: i32) -> i32 {
     // simulate delay
     let duration_to_park = Duration::from_secs(2);
     thread::park_timeout(duration_to_park);
-    return number_to_square * number_to_square;
+    number_to_square * number_to_square
 }
 
 /// adds inputs together
@@ -16,7 +16,7 @@ async fn add(a: i32, b: i32) -> i32 {
     // simulate delay
     let duration_to_park = Duration::from_secs(2);
     thread::park_timeout(duration_to_park);
-    return a + b;
+    a + b
 }
 
 /// executes WASM that is passed in as byte array
@@ -33,7 +33,7 @@ pub async fn execute_binary_with_parameters(binary: Vec<u8>, params: Vec<i32>) -
             Box::new(async move {
                 if let Val::I32(param_1) = params.get(0).unwrap() {
                     let count = square(param_1.to_owned()).await;
-                    results[0] = Val::I32(count as i32);
+                    results[0] = Val::I32(count);
                 }
                 Ok(())
             })
@@ -45,7 +45,7 @@ pub async fn execute_binary_with_parameters(binary: Vec<u8>, params: Vec<i32>) -
             if let Val::I32(param_a) = params.get(0).unwrap() {
                 if let Val::I32(param_b) = params.get(1).unwrap() {
                     let count = add(param_a.to_owned(), param_b.to_owned()).await;
-                    results[0] = Val::I32(count as i32);
+                    results[0] = Val::I32(count);
                 }
             }
             Ok(())
@@ -63,9 +63,8 @@ pub async fn execute_binary_with_parameters(binary: Vec<u8>, params: Vec<i32>) -
     let call_add_twice = instance
         .unwrap()
         .get_typed_func::<(i32, i32), i32>(&mut store, "main")?;
-    let calculation_result = call_add_twice
+
+    call_add_twice
         .call_async(&mut store, (params[0], params[1]))
-        .await;
-    // dbg!(&calculation_result);
-    calculation_result
+        .await
 }
